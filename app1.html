@@ -2,12 +2,12 @@
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="bootstrap.css" type="text/css">
 	
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="bootstrap.min.js"></script>
+	<link href="bootstrap.min.css" rel="stylesheet" media="screen">
 	<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" charset="utf-8">
@@ -141,7 +141,7 @@
 					todo.push(item);
 					localStorage.setItem('today',JSON.stringify(todo));  	
 					//update_data();						
-					//$("#value").val("");
+					$("#value").val("");
 				}
 				function update_data(){
 					$("#ul").empty();				
