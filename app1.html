@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+	
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" charset="utf-8">
+			
+		// Call onDeviceReady when PhoneGap is loaded.
+		//
+		// At this point, the document has loaded but phonegap.js has not.
+		// When PhoneGap is loaded and talking with the native device,
+		// it will call the event `deviceready`.
+		// 
+		function onLoad() {
+			console.log("I've been loaded");
+			document.addEventListener("deviceready", onDeviceReady, false);
+		}
+
+		// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+		//
+		function onDeviceReady() {
+			console.log("Device Ready");
+		}
+			
+		/**
+		 * Global Variables
+		 */
+		var cur = null;
+			
+		// Back key event handler
+		//
+		function onBackKey() {
+			console.log("I've caught a back key");
+				
+			// We are going back to home so remove the event listener 
+			// so the default back key behaviour will take over
+			document.removeEventListener("backbutton", onBackKey, false);
+				
+		// Hide the current dive and show home
+			document.getElementById(cur).style.display = 'none';
+			document.getElementById('home').style.display = 'block';
+		cur = 'home';
+		}
+
+		function goToDiv() {
+			// We are moving to a new div so over ride the back button 
+		// so when a users presses back it will show the home div
+			document.addEventListener("backbutton", onBackKey, false);
+		// Hide home and show the new div
+			//document.getElementById('home').style.display = 'none';
+			if(localStorage.getItem('today')){
+					todo = JSON.parse(localStorage.getItem('today'));  //chang  string to objct 
+					update_data();
+				}
+				
+			document.getElementById(id).style.display = 'block';
+			cur = id;
+		}
+		function goTodiv2(){
+			document.addEventListener("backbutton", onBackKey, false);
+			//document.getElementById(id).style.display = 'none';
+			alert();
+		}
+    </script>
+	
+	</head>
+	<style type="text/css">
+		.list {
+			display: block;
+			box-shadow: rgb(195, 195, 195) 0px 1px 2px 0px;
+			padding: 20px;
+			margin: 10px;
+			width:340px;
+			font-size:16px; 
+		}
+		.btnli
+		{
+			position: absolute;
+			left:320px;
+			margin-bottom:20px;
+		}		
+		
+		body
+		{
+			width:480px;
+			height:320px;			
+		}
+		
+
+	</style>
+	<body>
+
+		<div id='container'>
+			
+			<h2> Work : <input type="text" id="value" size="30"/>  <input type="button" class="btn btn-warning" id="add_btn" value="Save"/></h2>			
+			<h3>Today</h3>
+			
+      <div id="home"  class="form-actions">   
+		 
+		  <button name="show"class="btn btn-success"type="button" onclick="goToDiv()">Show</button>
+		  <button name="close"class="btn btn-success"type="button" onclick="goToDiv2()">Close</button>
+      </div>
+			
+				<ul id="ul">
+			
+				</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var todo = new Array();		
+			var state=0;
+			$(document).ready(function(){
+				
+				
+				$("#value").keydown(function (e) {
+					if(e.keyCode==13)
+					{
+						insert_data();
+					}
+					
+				});
+								
+				$("#add_btn").click(function(){		
+					insert_data();
+				});
+				
+
+			});	
+			    function insert_data(){
+					var item = 
+					{
+						content : $("#value").val()
+					};
+					todo.push(item);
+					localStorage.setItem('today',JSON.stringify(todo));  	
+					//update_data();						
+					//$("#value").val("");
+				}
+				function update_data(){
+					$("#ul").empty();				
+					for(var i in todo)
+					{
+						$("#ul").prepend($("<li class='list text-info'>").html(todo[i].content).append($("<input class='btn btn-success btnli' type='submit' value='done'>")
+                                    .attr('key', i)
+                                    .click(function() {      //****** removeItem()
+									    todo.splice($(this).attr('key'),1);
+										localStorage.setItem('today',JSON.stringify(todo));
+										update_data();
+										//console.log($(this).attr('key'));  // select button done on user click
+                                    })
+                            )
+						); 
+						//console.log(todo[i].content);
+					}
+
+				}
+	
+		</script>
+	</body>
+</html>
