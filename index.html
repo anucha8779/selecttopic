@@ -111,19 +111,11 @@
 			}
 			.footer{
 				height:40px;
-				background-color:#FF9900;
+				background-color:#0099FF;
 			}
-			.footer2{
-				height:40px;
-				background-color:#FFCC00;
-				color:#fff;
-			}
-			#container{
-				background-image:url('http://media-cache-ec0.pinimg.com/736x/29/af/9c/29af9cdc2b8c1cb981b31fa68b0d0722.jpg');
-			}
-			#main{
 			
-			}
+			
+			
 	</style>
 	<body>
 
@@ -146,18 +138,17 @@
 
 		</form>
 			
-     
-		
-			
-		</div>
-		
+     <center>
+	
+			<img src="http://media-cache-ec0.pinimg.com/736x/29/af/9c/29af9cdc2b8c1cb981b31fa68b0d0722.jpg">
+		</center>	
 		<div class="slide-menu">
 		<div class="footer">
-			<header>
+			<header align="right">
 				<input type="button" id="slide-back"  value="back" >
 			</header>
 		</div>
-			<ul id="ul">
+			<ul id="ul" align="left">
 			
 			</ul>
 		
@@ -200,7 +191,7 @@
 					$("#ul").empty();				
 					for(var i in todo)
 					{
-			$("#ul").prepend($("<li  class='list text-info'>").html(todo[i].content).append($("<input class='btn btn-small btn-success btnli' type='submit' value='remove'>")
+			$("#ul").prepend($("<li  class='list text-info'>").html(todo[i].content).append($("<input class='btn btn-small btn-danger btnli' type='submit' value='remove'>")
                                     .attr('key', i)
                                     .click(function() {      //****** removeItem()
 									    todo.splice($(this).attr('key'),1);
