@@ -78,9 +78,9 @@
 		.list {
 			display: block;
 			box-shadow: rgb(195, 195, 195) 0px 1px 2px 0px;
-			padding: 20px;
+			padding: 30px;
 			margin: 10px;
-			
+			width:300px;
 			font-size:16px; 
 		}
 		.btnli
@@ -92,7 +92,7 @@
 		
 		body
 		{
-			width:320px;
+			width:100%px;
 			height:320px;			
 		}
 		#add_btn
@@ -100,18 +100,21 @@
 			width:30px;
 			height:30px;	
 		}
-	.slide-menu{
-				width:320px;
-				height:100%;
-				background-color:white;
-				top:0px;
-				left:-320px;
-				position:absolute;
-				z-index:20;
-			}
-			.footer{
-				height:40px;
-				background-color:#0099FF;
+		.slide-menu{
+			width:320px;
+			height:100%;
+			background-color:white;
+			top:0px;
+			left:-320px;
+			position:absolute;
+			z-index:20;
+		}
+		.footer{
+			height:40px;
+			background-color:#0099FF;
+		}
+			#imgcenter{
+			width:100%;
 			}
 			
 			
@@ -122,7 +125,7 @@
 		<div id='container' align="center">
 			<div class="footer">
 				<header align="left">
-						<input type="button" id="slide-btn" class="pure-button" value="Menu" onclick="goToDiv()">
+						<input type="button" id="slide-btn" class="btn " value="Show" onclick="goToDiv()">
 				</header>
 			</div>
 			<div class="footer2">
@@ -138,14 +141,14 @@
 
 		</form>
 			
-     <center>
+		<center>
 	
-			<img src="http://media-cache-ec0.pinimg.com/736x/29/af/9c/29af9cdc2b8c1cb981b31fa68b0d0722.jpg">
+			<img id="imgcenter" src="http://media-cache-ec0.pinimg.com/736x/29/af/9c/29af9cdc2b8c1cb981b31fa68b0d0722.jpg">
 		</center>	
 		<div class="slide-menu">
 		<div class="footer">
 			<header align="right">
-				<input type="button" id="slide-back"  value="back" >
+				<input type="button" id="slide-back" class="btn " value="back" >
 			</header>
 		</div>
 			<ul id="ul" align="left">
