@@ -80,7 +80,7 @@
 			box-shadow: rgb(195, 195, 195) 0px 1px 2px 0px;
 			padding: 30px;
 			margin: 10px;
-			width:300px;
+			width:255px;
 			font-size:16px; 
 		}
 		.btnli
@@ -101,11 +101,11 @@
 			height:30px;	
 		}
 		.slide-menu{
-			width:320px;
+			width:350px;
 			height:100%;
 			background-color:white;
 			top:0px;
-			left:-320px;
+			left:-350px;
 			position:absolute;
 			z-index:20;
 		}
@@ -219,13 +219,13 @@
 				$('#slide-btn').on('click',function(){
 					//var left = parseInt($('.container').css('left'));
 				
-						$('.container').animate({right:0},500);
+						$('.container').animate({left:350},500);
 						$('.slide-menu').animate({left:0},500);
 						status = 0;					
 				}),
 				$('#slide-back').on('click',function(){
 						$('.container').animate({left:0},500);
-						$('.slide-menu').animate({left:-320},500);
+						$('.slide-menu').animate({left:-350},500);
 						status = 1;
 					
 				})
