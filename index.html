@@ -87,7 +87,7 @@
 		{
 			position: absolute;
 			left:320px;
-			margin-bottom:20px;
+			margin-bottom:0px;
 		}		
 		
 		body
@@ -100,11 +100,23 @@
 			width:30px;
 			height:30px;	
 		}
-
+	.slide-menu{
+				width:320px;
+				height:100%;
+				background-color:white;
+				top:0px;
+				left:-320px;
+				position:absolute;
+				z-index:20;
+			}
 	</style>
 	<body>
 
 		<div id='container'>
+		<header>
+				<input type="button" id="slide-btn" class="pure-button" value="Menu" onclick="goToDiv()">
+		</header>
+		
 		<H1><b>NOTE DO LIST</b></h1><hr>
 		<form class="form-horizontal">
 			<h3> Work :</h3> <input type="text" id="value" size="30"/>  
@@ -125,9 +137,17 @@
 			</div>
       </div>
 		
+				
+		</div>
+		
+		<div class="slide-menu">
+		
+			<header>
+				<input type="button" id="slide-back"  value="back" >
+			</header>
 				<ul id="ul">
 			
-				</ul>
+			</ul>
 		</div>
 		
 		<div class="row">
@@ -167,7 +187,7 @@
 					$("#ul").empty();				
 					for(var i in todo)
 					{
-						$("#ul").prepend($("<li class='list text-info'>").html(todo[i].content).append($("<input class='btn btn-small btn-success btnli' type='submit' value='remove'>")
+						$("#ul").prepend($("<li  class='list text-info'>").html(todo[i].content).append($("<input class='btn btn-small btn-success btnli' type='submit' value='remove'>")
                                     .attr('key', i)
                                     .click(function() {      //****** removeItem()
 									    todo.splice($(this).attr('key'),1);
@@ -183,6 +203,26 @@
 				}
 			
 	
+		</script>
+		
+		<script type="text/javascript" src="jquery-2.0.3.js"></script>
+		<script type="text/javascript">
+			var status = 1;
+			$(document).ready(function(){
+				$('#slide-btn').on('click',function(){
+					//var left = parseInt($('.container').css('left'));
+				
+						$('.container').animate({right:0},500);
+						$('.slide-menu').animate({left:0},500);
+						status = 0;					
+				}),
+				$('#slide-back').on('click',function(){
+						$('.container').animate({left:0},500);
+						$('.slide-menu').animate({left:-320},500);
+						status = 1;
+					
+				})
+			});
 		</script>
 	</body>
 </html>
