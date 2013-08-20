@@ -92,7 +92,8 @@
 		
 		body
 		{
-			width:100%px;
+			width:100%;
+			height:100%;
 					
 		}
 		#add_btn
@@ -101,11 +102,11 @@
 			height:30px;	
 		}
 		.slide-menu{
-			width:355px;
+			width:360px;
 			height:100%;
 			background-color:white;
 			top:0px;
-			left:-355px;
+			left:-360px;
 			position:absolute;
 			z-index:20;
 		}
@@ -228,13 +229,13 @@
 				$('#slide-btn').on('click',function(){
 					//var left = parseInt($('.container').css('left'));
 				
-						$('.container').animate({left:355},500);
+						$('.container').animate({left:360},500);
 						$('.slide-menu').animate({left:0},500);
 						status = 0;					
 				}),
 				$('#slide-back').on('click',function(){
 						$('.container').animate({left:0},500);
-						$('.slide-menu').animate({left:-355},500);
+						$('.slide-menu').animate({left:-360},500);
 						status = 1;
 					
 				})
